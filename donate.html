@@ -5,8 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Donate - DOOARS WELFARE FOUNDATION</title>
   <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Extra styling for payment form */
+    .payment-box {
+      background: #fff;
+      padding: 20px;
+      max-width: 400px;
+      margin: 20px auto;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .payment-box input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .receipt {
+      background: #dff0d8;
+      color: #3c763d;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 5px;
+      display: none;
+    }
+  </style>
 </head>
 <body>
+
   <header>
     <div class="container">
       <h1>DOOARS WELFARE FOUNDATION</h1>
@@ -22,36 +49,55 @@
     </div>
   </header>
 
-  <section class="donate">
-    <div class="container">
-      <h2>Support Our Cause</h2>
-      <p>Your donation helps us fund essential programs like education, healthcare, food distribution, and clean water initiatives in the Dooars region. Every rupee counts.</p>
+  <div class="container">
+    <h2>Donate to Support Our Cause</h2>
+    <p>Your contributions help us bring education, healthcare, and better living conditions to those in need.</p>
 
-      <h3>How to Donate</h3>
-      <ul>
-        <li><strong>Bank Transfer:</strong><br>
-          Account Name: DOOARS WELFARE FOUNDATION<br>
-          Account Number: 123456789012<br>
-          IFSC: SBIN0000001<br>
-          Bank: State Bank of India<br>
-          Branch: Alipurduar</li>
-        <br>
-        <li><strong>UPI:</strong> dooarsfoundation@upi</li>
-        <br>
-        <li><strong>PayPal:</strong> <a href="#">paypal.me/dooarsfoundation</a></li>
-      </ul>
+    <div class="payment-box">
+      <h3>Dummy Payment Gateway</h3>
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="number" id="amount" placeholder="Amount (₹)" required>
+      <input type="text" placeholder="Card Number" required>
+      <input type="text" placeholder="MM/YY" required>
+      <input type="text" placeholder="CVV" required>
+      <button class="btn" onclick="processPayment()">Donate</button>
 
-      <h3>Why Donate?</h3>
-      <p>We ensure complete transparency and accountability. 100% of your donation goes toward project implementation. You will receive regular updates and impact reports.</p>
-
-      <a href="contact.html" class="btn">Need Help? Contact Us</a>
+      <div class="receipt" id="receiptBox"></div>
     </div>
-  </section>
+  </div>
 
   <footer>
     <div class="container">
       <p>© 2025 DOOARS WELFARE FOUNDATION. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    function processPayment() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const amount = document.getElementById('amount').value;
+
+      if (!name || !email || !amount) {
+        alert('Please fill all required fields.');
+        return;
+      }
+
+      const receipt = `
+        <h4>Payment Receipt</h4>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Amount:</strong> ₹${amount}</p>
+        <p><strong>Status:</strong> Payment Successful ✅</p>
+        <p><em>This is a demo receipt. No real payment was made.</em></p>
+      `;
+
+      const receiptBox = document.getElementById('receiptBox');
+      receiptBox.innerHTML = receipt;
+      receiptBox.style.display = 'block';
+    }
+  </script>
+
 </body>
 </html>
